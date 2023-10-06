@@ -1,0 +1,31 @@
+<%- include("partials/header.ejs") %>
+<section class="works">
+    <div class="content">
+        <div class="top-heading">
+            <h1>Work Lists</h1>
+        </div>
+        <% if(works.length !== 0) {%>
+            
+            <form class="all-task" action="/delete" method="post">
+                <% works.forEach(element => {%>
+                    <div class="task">
+                        <input type="checkbox" class="checkbox" name="workId" value="<%= element._id %>" onChange="this.form.submit()">
+                        <h3 class="task-text"><%= element.task %></h3>
+                    </div>
+                        <%}); %>
+                </form>
+        <%}%>
+    
+        <form action="/submit" method="post">
+            <div class="form">
+                <input placeholder="Add New Task" type="text" name="works" id="works" required>
+                <button type="submit">
+                    <img src="/icons/add-btn.svg" alt="">
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+    <%- include("partials/footer.ejs") %>
